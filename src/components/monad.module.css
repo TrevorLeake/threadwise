@@ -1,0 +1,46 @@
+
+.container {
+  /* background-color: hsl(from darkslategrey h s calc(l/3)); */
+  display: grid;
+  width:fit-content;
+  grid-template-columns: 100 100;
+  grid-template-rows: 100 100;
+  grid-template-areas: 
+    "tl tr"
+    "bl br"
+  ;
+  align-items: center;
+  justify-items: center;
+  opacity: .6;
+}
+
+.superior {
+  transform: 10px, 10px;
+}
+
+.red { 
+  background-color: lightseagreen;
+}
+
+.blue {
+  opacity: .6;
+  background-color: hsl(from darkslateblue -1.579turn 290 50);
+}
+.gold {
+  background-color: seagreen;
+  opacity: .6;
+}
+
+.left.inferior { 
+  grid-area: bl;
+  z-index: -1;
+}
+.right {
+  grid-area: tr;
+}
+.circle {
+  width:160;
+  height:160;
+  clip-path: circle(50%);
+  mix-blend-mode: color;
+}

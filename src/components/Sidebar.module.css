@@ -1,0 +1,35 @@
+
+
+.cubby {
+  /* background-color: brown; */
+  border: 1px solid white;
+  inset: 1em;
+}
+
+/* Optional: smoothly reveal content when grid expands
+.layout:hover .sidebar {
+  width: 250px;
+} */
+
+.layout.expanded .sidebar {
+  width: 250px;
+}
+
+.sidebar {
+  /* background-color: var(--off-black); */
+  a {
+    /* color: var(--lavender-gray); */
+
+  }
+  
+  li {
+    margin: 0;
+    padding: 0 0 0 12px;
+    list-style: none;
+    /* background-color:var(--github-green-bright) */
+    /* background-image: url('/block.svg'); 	 */
+    /* background-repeat: no-repeat; */
+    /* background-position: left center; */
+    /* background-size: 10px; */
+  }
+}

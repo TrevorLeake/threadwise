@@ -1,0 +1,21 @@
+
+.playhead {
+  top:0;
+  z-index: 2;
+  position: absolute;
+  width:1px;
+  background-color: rgba(218, 241, 241,.3);
+  opacity: 1;
+  mix-blend-mode:exclusion;
+}
+.playhead::before {
+  content: ' ';
+  width:1px;
+  height:100%;
+  opacity: 1;
+  position:absolute;
+  background-color: rgba(5, 224, 191, 0.477);
+  display:inline;
+  z-index: 3;
+  mix-blend-mode: color-dodge;
+}

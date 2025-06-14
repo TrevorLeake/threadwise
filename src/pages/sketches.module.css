@@ -1,0 +1,11 @@
+
+.dual {
+  background-color: rgba(255,240,80,.4);
+  translate: 10px -100%;
+  z-index: -1;
+}
+
+.article {
+  background-color: rgba(200, 80, 255, 0.2);
+  translate: 10px -100%;
+}

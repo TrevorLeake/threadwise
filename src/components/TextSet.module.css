@@ -1,0 +1,41 @@
+
+
+.set {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+
+  background-color: hsl(from var(--off-black) h s calc(l/1.6));
+  padding: 1.61em;
+
+  div, a { 
+    transition: max-height 1s linear;
+    /* transition: flex-grow 1000ms linear; */
+    display: inline-flex;
+    overflow: hidden;
+    max-height: fit-content; 
+    /* border: 2px solid purple; */
+
+    flex-grow: 1;
+    transition: flex-grow 1000ms linear;
+  }
+
+  @media screen and (max-width:800px) {
+    max-width: fit-content;
+  }
+}
+
+
+.set-paren-left {
+  font-size: 2.41em;
+  color:linen;
+  flex-grow: 1;
+  align-self: flex-start;
+}
+.set-paren-right {
+
+  font-size: 2.41em;
+  flex-grow: 1;
+  color:linen;
+  align-self: flex-end;
+}

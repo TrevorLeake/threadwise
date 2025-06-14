@@ -1,0 +1,24 @@
+
+
+.cubby {
+  /* background-color: brown; */
+  border: 1px solid white;
+  inset: 1em;
+}
+
+.sidebar {
+  /* background-color: var(--off-black); */
+  
+  li {
+    margin: 0;
+    justify-self: right;
+    padding: 0 0 0 12px;
+    list-style: none;
+    /* background-color:var(--github-green-bright) */
+    /* background-image: url('/block.svg'); 	 */
+    /* background-repeat: no-repeat; */
+    /* background-position: left center; */
+    /* background-size: 10px; */
+    justify-content: left;
+  }
+}

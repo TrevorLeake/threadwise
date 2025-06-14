@@ -1,0 +1,51 @@
+
+
+.timer-body {
+  background-color: black;
+  width:100%;
+  max-width: 100%;
+}
+
+.timer-display { 
+  /* animation */
+  /* transform: translate(-50%, -50%); */
+  animation: colorA 3s alternate ease-in-out infinite;
+
+}
+
+
+.dot {
+  clip-path: circle(50%);
+  background-color:brown;
+  mix-blend-mode:multiply;
+  width: 8em;
+  height: 8em;
+  float:left;
+  transition-duration: 1s;
+  /* animation */
+  /* transform: translate(-50%, -50%); */
+  animation: orbit 4s alternate ease-in-out infinite;
+  translate: 0 -71px;
+}
+
+
+/* feeling I need a clearer animation layer; maybe just better composition of css classes for animation layers */
+
+@keyframes orbit {
+  from {
+    transform: translateX(29em);
+  }
+  to {
+    transform: translateX(3em);
+  }
+}
+
+@keyframes colorA {
+  from {
+    /* another spot where I'm noticing the importance of representational interest and explicity.. and the duality of structure from symbolic form to  */
+    background-color: hsl(from var(--off-black) h s l);
+  }
+  to {
+    background-color: hsl(from var(--off-black) h s calc(l*.93));
+  }
+}

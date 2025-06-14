@@ -1,0 +1,15 @@
+
+.speaker {
+  clip-path: circle(50%);
+  width:200px;
+  height: 200px;
+  background-color: blue;
+}
+
+.event {
+  clip-path: circle(50%);
+  width:40px;
+  height:40px;
+  background-color: gray;
+}
+

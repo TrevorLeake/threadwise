@@ -1,0 +1,20 @@
+
+
+.brandmark {   
+  font-weight: 600;
+  align-self: center;
+  margin: 1.2rem;
+  aspect-ratio: 1;
+  font-variant: all-small-caps;
+  color: white;
+  align-content: center;
+  padding: .5em;
+  border: 2px solid rgb(255, 255, 255);
+  margin-left: auto;
+  /* background-color: hsla(aquamarine h s l .2); */
+}
+/* .brandmark::after {
+  inset: 1em;
+  content: '';
+  border: 1rem÷ solid rgba(200,80,80,.2);
+} */
