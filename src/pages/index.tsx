@@ -25,7 +25,7 @@ import Link from 'next/link';
 import TraversalTimer from '@/components/TraversalTimer';
 import { CSSProperties, useEffect, useReducer, useRef } from 'react';
 import { BroadPageContainer, FlowRow, HR, PageContainer, PostPreviewSquare, Section } from '@/atoms/Container';
-import { Heading, ListItem, Paragraph, SectionHeading, Subheading } from '@/atoms/TypographySC';
+import { Heading, ListItem, Paragraph, PostPreviewHeading, PostPreviewParagraph, SectionHeading, SectionSubheading, Subheading } from '@/atoms/TypographySC';
 import { Post } from '@/lib/posts';
 import { Date } from '@/atoms/Typography';
 
@@ -40,15 +40,15 @@ const exampleGrid = {
 
 const PostPreview = (props:{style?:CSSProperties, title:string, previewDescription:string, publishedDate:string, tags:string[] }) => {
   return <PostPreviewSquare>
-    <h3>
+    <PostPreviewHeading>
       {props.title}
-    </h3>
-    <Date>
+    </PostPreviewHeading>
+    {/* <Date>
       {props.publishedDate}
-    </Date>
-    <Paragraph>
+    </Date> */}
+    <PostPreviewParagraph>
       {props.previewDescription}
-    </Paragraph>
+    </PostPreviewParagraph>
 
   </PostPreviewSquare>
 }
@@ -89,18 +89,35 @@ export default function Home({ articleSlugs, logSlugs, posts }: Props) {
     <Layout articleSlugs={articleSlugs} logSlugs={logSlugs}>
       <BroadPageContainer>
         {/* <TraversalTimer></TraversalTimer>  */}
-        <SectionHeading>Writings</SectionHeading>
+        <Heading>Writing</Heading>
+        <Section>
+          <SectionHeading>dev domains</SectionHeading>
+          <SectionSubheading>
+            design sketching, w
+            layers,
+            opinionation,
+            paradigms of representation,
+            marking
+          </SectionSubheading>
+          <FlowRow>
+              {posts.map((post,i) => (
+                i>4?<></>:<Link href={`/posts/${post.slug}`}>
+                  <PostPreview {...post.frontmatter}/>
+                </Link>
+              ))}
+          </FlowRow>
+        </Section>
 
-        {/* <Subheading>on web dev</Subheading> */}
-        {/* <Paragraph>
-          some writing on blah blah
-        </Paragraph> */}
-          
-          {/* {a1} */}
+        
           <Section>
+            <SectionHeading>social domains</SectionHeading>
+            <SectionSubheading>
+              working with self, developing self, working with others
+              understanding the thicket, 
+            </SectionSubheading>
             <FlowRow>
-              {posts.map(post => (
-                <Link href={`/posts/${post.slug}`}>
+              {posts.map((post,i) => (
+                i>5?<></>:<Link href={`/posts/${post.slug}`}>
                   <PostPreview {...post.frontmatter}/>
                 </Link>
               ))}

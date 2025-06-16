@@ -7,9 +7,8 @@
 
   --font-heading: "Playfair Display", serif;
   --font-subheading: "IBM Plex Serif", serif;
-  --font-body: "Roboto", sans-serif;
+  --font-body: var(--roboto);
   --font-pleasant-authority: "Space Mono", monospace;
-
 
 
 /* sccss? */
@@ -30,10 +29,11 @@
   --site-voice-max:3rem;
 
 
-  --heading-ramp: clamp(3rem, 3rem + 10vw, 6.5rem);
-  --section-heading-ramp: clamp(2rem, 1rem + 7vw, 5rem); 
+  --heading-ramp: clamp(3rem, 3rem + 10vw, 6rem);
+
+  --section-heading-ramp: clamp(1.5rem, 1.5rem + 7vw, 3rem);
   --subheading-ramp: clamp(1.3rem, 1.3rem + 1vw, 2rem);
-  --body-ramp: clamp(1rem, 1rem + 1vw, 1.36rem); 
+  --body-ramp: clamp(1rem, 1rem + 1vw, 1rem); 
   --site-voice-ramp: clamp(1rem, 1rem + 3vw, 3rem); 
 
 /* 

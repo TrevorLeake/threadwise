@@ -12,7 +12,7 @@ export const BroadPageContainer = styled.div`
 `
 
 export const PageContainer = styled.div`
-  max-width: 60ch;
+  max-width: 65ch;
   margin: 0 auto;
   padding: .9rem 2.4rem;
   // background-color: ${({ theme }) => theme.colors.shadeBg};
@@ -66,10 +66,12 @@ export const FlowRow = styled.div`
 
 export const PostPreviewSquare = styled.div`
   // min-width: fit-content;
-  padding: 2rem;
+  padding: 1rem;
+
   max-height:8rem;
   max-width: 20ch;
+  width: 20ch;
   // background: ${({theme})=> theme.colors.shadierBg };
-  border: .1rem dashed ${({theme})=>theme.colors.secondary };
+  // border: .1rem dashed ${({theme})=>theme.colors.secondary };
   // flex-grow:1
 `

@@ -8,13 +8,16 @@
   --github-green-bright: #14e2a1;
   --github-green-dim: hsl(from #14e2a1 h calc(s/1.2) calc(l/2));
  
-  
+  --font-body: var(--roboto);
+
   --heading-ramp: clamp(3rem, 3rem + 8vw, 6.5rem);
-  --section-heading-ramp: clamp(2.4rem, 2.4rem + 7vw, 5rem); 
+  --section-heading-ramp: clamp(1.9rem, 1.9rem + 2vw, 3rem); 
   --subheading-ramp: clamp(1.3rem, 1.3rem + 1vw, 2rem);
-  --body-ramp: clamp(1rem, 1rem, 1rem); 
+  --body-ramp: clamp(.9rem, 1rem + 1vw, 1.2rem); 
   --site-voice-ramp: clamp(1rem, 1rem + 3vw, 3rem); 
   /* --uninteracted: 1; */
+
+  --small-read: clamp(.7rem, .7rem + 2vw, 1rem);  
 }
 
 @media (prefers-color-scheme: dark) {
@@ -39,7 +42,7 @@ body {
   /* font-family: 'Spectal SC' sans-serif, Arial, Helvetica, sans-serif; */
   font-weight: 200;
   /* font-family: var(--spectral-sc); */
-  /* font-family: var(--spectral-sc); */
+  /* font-family: var(--font-body); */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -146,7 +149,7 @@ article {
   /* min-height: 70vh; */
   margin-top: 1em;
   
-  font-family: 'Spectral';
+  /* font-family: 'Spectral'; */
   margin-left: auto;
   margin-right: auto;
   font-size: var(--font-normal);
@@ -182,7 +185,7 @@ article {
 
 
   & > * > h1 {
-    font-family: 'Spectral';
+    /* font-family: 'Spectral'; */
     font-size: 2.5em;
     /* line-break: auto; */
     /* box-sizing: border-box; */

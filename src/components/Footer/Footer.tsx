@@ -10,6 +10,7 @@ import { ThemeToggle } from '../ThemeButton'
 import { MailingForm } from '../Mailing/MailingForm'
 import Brandmark from '../Brandmark/Brandmark'
 import { FooterMapLink } from '@/atoms/TypographySC'
+import Link from 'next/link'
 
 
 
@@ -62,8 +63,10 @@ export const Footer = (props:{style?: CSSProperties}) => {
           </div>
         </Column>
 
-        <Row style={{}}>
-          <Brandmark style={{ aspectRatio:1, }} />
+        <Row style={{ flexDirection:'row-reverse'}}>
+          <Link href='/'>
+            <Brandmark style={{ aspectRatio:1, }} />
+          </Link>  
         </Row>
         </FooterWrapper>
     </div>

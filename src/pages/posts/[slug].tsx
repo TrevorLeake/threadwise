@@ -12,9 +12,10 @@ import Monad from '@/components/Monad'
 import TextSet from '@/components/TextSet';
 import TraversalTimer from '@/components/TraversalTimer';
 import { HR, PageContainer, Row } from '@/atoms/Container';
-import { Heading, ListItem, Paragraph, Subheading } from '@/atoms/TypographySC';
+import { EyeLead, Heading, ListItem, Paragraph, Subheading } from '@/atoms/TypographySC';
 import { Tag } from '@/atoms/Tag';
 import { Date } from '@/atoms/Typography';
+import Column from '@/components/Column/Column';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const articleSlugs = getAllArticleSlugs();
@@ -64,7 +65,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 export default function PostPage({ frontmatter, mdxSource, articleSlugs, logSlugs }: any) {
 
-  const components = { Snippet, Monad, TextSet, TraversalTimer  };
+  const components = { Snippet, Monad, TextSet, TraversalTimer, EyeLead  };
   // console.log(frontmatter, mdxSource.frontmatter)
   const { title, subheading, publishedDate, tags } = frontmatter
   // layout type... log, journal, post, ... 
@@ -74,11 +75,14 @@ export default function PostPage({ frontmatter, mdxSource, articleSlugs, logSlug
         <Row style={{ float:'right',flexFlow:'row-reverse', padding:'.8rem'}}>
           {!publishedDate?<></>:<Date>{publishedDate}</Date>} 
         </Row>
-        <Heading>{title}</Heading>
+        <Row style={{}}>
+            <Heading style={{textWrap:'wrap', textAlign:'center',  whiteSpace:'wrap'}}>{title}</Heading>
+        </Row>
         <Subheading>{subheading}</Subheading>
-        <div style={{display:'flex', flexDirection:'row'}}>
+
+        {/* <div style={{display:'flex', flexDirection:'row'}}>
           {!tags?<></>:tags.split(',').map((tag:string)=><Tag>{tag}</Tag>)}
-        </div>
+        </div> */}
         <HR></HR>
         
         {/* <h1 style={{ display:'flex', flexDirection:'row',alignItems:'baseline',  justifyContent:'space-around', width:'100%'}} >{frontmatter.title.split(' ').map((word: string, i:number) => <span>{word}</span>)}</h1> */}

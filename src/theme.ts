@@ -1,4 +1,5 @@
 // theme.ts
+
 export const lightTheme = {
   name:'light',
   colors: {
@@ -12,10 +13,10 @@ export const lightTheme = {
     tagText: '#333',
   },
   fonts: {
-    body: 'Georgia, serif',
-    pleasantAuthority:'Playfair Display',
-    subheading: 'IBM Plex',
-    heading: 'Playfair Display',
+    body: 'var(--merriweather-sans)',
+    pleasantAuthority:'var(--playfair)',
+    subheading: 'var(--open-sans)',
+    heading: 'var(--playfair)',
   },
 }
 

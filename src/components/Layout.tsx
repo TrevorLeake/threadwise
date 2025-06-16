@@ -14,7 +14,7 @@ export default function Layout({ children, logSlugs, articleSlugs }: { children:
     <div className={layoutStyles.layout}> 
       <div style={{ gridArea: 'header', display:'flex',flexDirection:'row', justifyContent:'start' }}>
         <div style={{ padding:'1em' }}>
-          <Link href='/'>L.dev</Link>  
+          <Link href='/'>Leake.dev</Link>  
         </div>
         <div style={{ display:'flex', flexDirection:'column', justifyContent:'end'}}>
         </div>
