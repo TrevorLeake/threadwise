@@ -17,17 +17,18 @@
 }
 
 .layout {
-  box-shadow:
-    inset 60px 0 120px #002,  /* left magenta */
-    inset -60px 0 250px #254; /* right cyan */
+  /* box-shadow:
+    inset 60px 0 120px #002,  
+    inset -60px 0 250px #254;  */
+
 
   display: grid;
   transition: grid-template-columns 0.3s ease-out;
 
   grid-template-areas:
     "header header header header"
-    "left   left   left   right"
     "main   main   main   main"
+    "left   left   left   right"
     "mail   mail   mail   mail"
     "footer footer footer footer";
   grid-template-columns: 1fr 1fr 1fr min-content;

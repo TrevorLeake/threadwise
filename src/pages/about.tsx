@@ -11,6 +11,8 @@ import Snippet from '@/components/Snippet';
 
 import Monad from '@/components/Monad'
 import Kanban from '@/components/Kanban';
+import { PageContainer } from '@/atoms/Container';
+import { Heading } from '@/atoms/TypographySC';
 
 // export const getStaticPaths: GetStaticPaths = async () => {
 //   const slugs = getAllSlugs();
@@ -57,26 +59,9 @@ export default function MailingPage({ frontmatter, mdxSource, slugs }: any) {
   const fields = 'software and computer science; math; mechanical engineering; music'
   return (
     // <Layout slugs={slugs}>
-      <article className='dark-mode' >
+      <PageContainer>
+        <Heading>Trevor Leake</Heading>
         <div>
-          <div style={{  fontFamily:'var(--spectral', justifyContent:'center', width:'100%', display:'flex', flexDirection:'column'}}>
-            <h1 style={{ padding:'1.19em', fontFamily:'var(--spectral-sc)' }}>Trevor Leake</h1>
-            <div style={{ display:'flex', flexDirection:'column' }}>
-              <ul>
-                {fields.split(';').map(word => <li>{word}</li>)}
-              </ul>
-            </div>
-          </div>
-          <div style={{ height:'450px'}}>
-            <Kanban></Kanban>
-            {/* <img style={{ 
-              height:'100%',
-              width:'100%',
-
-              objectFit:'cover'
-            }} src={'/selfie.jpg'}></img> */}
-          </div>
-
           <br/>
           <br/>
           Q: What have you been doing in the year gap in your work? 
@@ -84,9 +69,8 @@ export default function MailingPage({ frontmatter, mdxSource, slugs }: any) {
           <br/>
           A: I've been asking myself questions, deconstructing and understanding the social forces I exert. Therapy, books, journaling. And coding!
           <br/>
-          
         </div>
-      </article>
+      </PageContainer>
     // </Layout>
   );
 }

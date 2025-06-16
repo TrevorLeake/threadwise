@@ -9,6 +9,7 @@ export const PageContainer = styled.div`
   padding: .9rem 2.4rem;
   // background-color: ${({ theme }) => theme.colors.shadeBg};
   // box-shadow: .2rem .2rem .5rem #00000099;
+  min-height:min(100vh);
 `
 
 export const Section = styled.section`

@@ -23,25 +23,22 @@ export default function Layout({ children, logSlugs, articleSlugs }: { children:
 
     
 
-      <div style={{gridArea:'header',  visibility:'hidden', display:'flex', flexDirection:'row', backgroundColor:'var(--off-black)' }} id='pull-bar'>
-        {
-          Array.from([0,1,2,3]).map((_,i) => <div key={_} style={{flexGrow:1}} className={sidebarStyles.cubby}></div>)
-        }
-        <Link href={'/sketchpad'}>sketchpad</Link>
+      <div style={{gridArea:'header',  visibility:'', display:'flex', flexDirection:'row', }} id='pull-bar'>
         <div className={sidebarStyles.cubby} style={{ flexGrow:1}}>
           <div>
-            {/* <Link href='/gallery'>gallery</Link>   */}
+            <Link href='/gallery'>gallery</Link>  
           </div>
           <div>
-            {/* <Link href={'/mailing'}>mailing</Link> */}
-          </div>
-          <div>
-            <Link href='/about'>about</Link>
+            {/* <Link href='/about'>about</Link> */}
           </div>
           <div>
             {/* <Link href='/sketches'>sketches</Link> */}
           </div>
         </div>
+        {
+          Array.from([0,1,2,3]).map((_,i) => <div key={_} style={{flexGrow:1}} className={sidebarStyles.cubby}></div>)
+        }
+        {/* <Link href={'/sketchpad'}>sketchpad</Link> */}
       </div>
 
       <main style={{ 
@@ -52,8 +49,8 @@ export default function Layout({ children, logSlugs, articleSlugs }: { children:
         
       </main>
       <div style={{ gridArea:'right' }}>
-        {/* <LogsBar slugs={logSlugs} /> */}
-        {/* <Sidebar slugs={articleSlugs} /> */}
+        <LogsBar slugs={logSlugs} />
+        <Sidebar slugs={articleSlugs} />
       </div>
 
       <Row style={{ gridArea:'mail', marginTop:'5.4rem', padding:'2rem', justifyContent:'center' }}>

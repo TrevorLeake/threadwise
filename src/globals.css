@@ -8,7 +8,11 @@
   --github-green-bright: #14e2a1;
   --github-green-dim: hsl(from #14e2a1 h calc(s/1.2) calc(l/2));
  
-   
+  
+  --heading-ramp: clamp(3rem, 3rem + 8vw, 6.5rem);
+  --subheading-ramp: clamp(1.3rem, 1.3rem + 1vw, 2rem);
+  --body-ramp: clamp(1rem, 1rem, 1rem); 
+  --site-voice-ramp: clamp(1rem, 1rem + 3vw, 3rem); 
   /* --uninteracted: 1; */
 }
 
