@@ -5,7 +5,7 @@ import sidebarStyles from './LogsBar.module.css'
 import css from "styled-jsx/css";
 
 // components/Sidebar.tsx
-export function LogsBar({ slugs, style }: { slugs: string[], style:CSSProperties }) {
+export function LogsBar({ slugs, style }: { slugs: string[], style?:CSSProperties }) {
   const [hovered, setHovered] = useState<number>()
   return (
     <nav className={sidebarStyles.sidebar} style={{ ...style }}>

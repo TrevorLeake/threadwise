@@ -66,13 +66,13 @@ export default function PostPage({ frontmatter, mdxSource, articleSlugs, logSlug
 
   const components = { Snippet, Monad, TextSet, TraversalTimer  };
   // console.log(frontmatter, mdxSource.frontmatter)
-  const { title, subheading, date, tags } = frontmatter
+  const { title, subheading, publishedDate, tags } = frontmatter
   // layout type... log, journal, post, ... 
   return (
     <Layout articleSlugs={articleSlugs} logSlugs={logSlugs}>
       <PageContainer>
         <Row style={{ float:'right',flexFlow:'row-reverse', padding:'.8rem'}}>
-          {!date?<></>:<Date>{date}</Date>} 
+          {!publishedDate?<></>:<Date>{publishedDate}</Date>} 
         </Row>
         <Heading>{title}</Heading>
         <Subheading>{subheading}</Subheading>

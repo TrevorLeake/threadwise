@@ -1,5 +1,5 @@
 // ThemeContext.tsx
-import { createContext, useContext, useEffect, useState } from 'react'
+import { createContext, ReactNode, useContext, useEffect, useState } from 'react'
 import { lightTheme, darkTheme } from './theme'
 import { ThemeProvider as SCThemeProvider } from 'styled-components'
 
@@ -12,7 +12,7 @@ const ThemeContext = createContext({
 export const useThemeContext = () => useContext(ThemeContext)
 
 
-export const ThemeProvider = ({ children }) => {
+export const ThemeProvider = ({children}: {children:ReactNode}) => {
   const [isDark, setIsDark] = useState(true)
   const toggle = () => {setIsDark(prev => { 
     console.log('setting to ', !prev)
@@ -30,8 +30,8 @@ export const ThemeProvider = ({ children }) => {
 
 
   return (
-    <SCThemeProvider theme={ isDark?darkTheme:lightTheme}>
-      <ThemeContext.Provider value={{ toggleTheme:toggle, theme:isDark?darkTheme:lightTheme }}>
+    //@ts-ignore
+    <SCThemeProvider theme={ isDark?darkTheme:lightTheme}><ThemeContext.Provider value={{ toggleTheme:toggle, theme:isDark?darkTheme:lightTheme }}>
         {children}
       </ThemeContext.Provider>
     </SCThemeProvider>

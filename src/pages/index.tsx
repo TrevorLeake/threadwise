@@ -6,6 +6,7 @@ import { GridDisplay, key } from '@/components/Grid';
 type Props = {
   articleSlugs: string[];
   logSlugs: string[];
+  posts: Post[]
 };
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
@@ -22,10 +23,11 @@ import String from '@/components/String';
 import Canvas from '@/components/Canvas';
 import Link from 'next/link';
 import TraversalTimer from '@/components/TraversalTimer';
-import { useEffect, useReducer, useRef } from 'react';
-import { MailingForm } from '@/components/mailing/MailingForm';
-import { PageContainer } from '@/atoms/Container';
-import { Heading, ListItem, Paragraph, Subheading } from '@/atoms/TypographySC';
+import { CSSProperties, useEffect, useReducer, useRef } from 'react';
+import { BroadPageContainer, FlowRow, HR, PageContainer, PostPreviewSquare, Section } from '@/atoms/Container';
+import { Heading, ListItem, Paragraph, SectionHeading, Subheading } from '@/atoms/TypographySC';
+import { Post } from '@/lib/posts';
+import { Date } from '@/atoms/Typography';
 
 const exampleGrid = {
   [key([0, 0])]: 'You',
@@ -36,7 +38,23 @@ const exampleGrid = {
 
 
 
-export default function Home({ articleSlugs, logSlugs }: Props) {
+const PostPreview = (props:{style?:CSSProperties, title:string, previewDescription:string, publishedDate:string, tags:string[] }) => {
+  return <PostPreviewSquare>
+    <h3>
+      {props.title}
+    </h3>
+    <Date>
+      {props.publishedDate}
+    </Date>
+    <Paragraph>
+      {props.previewDescription}
+    </Paragraph>
+
+  </PostPreviewSquare>
+}
+
+
+export default function Home({ articleSlugs, logSlugs, posts }: Props) {
 
   const paths = `
   lighthouse performance vitals "modern standards"
@@ -63,17 +81,54 @@ export default function Home({ articleSlugs, logSlugs }: Props) {
   symbols and systems
   `.split('\n')
 
+  const text = 'blahblahblah'
+  const a1 = Array(100).fill(1).reduce((prev, acc) => text+prev)
+  
+  const prettifySlug = (slug:string) => slug.replace('-',' ')
   return (
     <Layout articleSlugs={articleSlugs} logSlugs={logSlugs}>
-      <PageContainer>
-        <Heading>web dev journals</Heading>
-        <Subheading>Some things I'll be writing on...</Subheading>
+      <BroadPageContainer>
+        {/* <TraversalTimer></TraversalTimer>  */}
+        <SectionHeading>Writings</SectionHeading>
+
+        {/* <Subheading>on web dev</Subheading> */}
+        {/* <Paragraph>
+          some writing on blah blah
+        </Paragraph> */}
+          
+          {/* {a1} */}
+          <Section>
+            <FlowRow>
+              {posts.map(post => (
+                <Link href={`/posts/${post.slug}`}>
+                  <PostPreview {...post.frontmatter}/>
+                </Link>
+              ))}
+            </FlowRow>
+          </Section>
+
+         {/* <Section>
+            <FlowRow>
+              {logSlugs.map(slug => <div>{slug.replace('-',' ')}</div>)}
+              {
+              // posts.map(post => (
+              //   <Link href={`/posts/${post.slug}`}>
+              //     <PostPreview {...post.frontmatter}/>
+              //   </Link>
+              // ))
+              }
+            </FlowRow>
+          </Section> */}
+           
+
+
+        {/* <h3>writing</h3> */}
+        {/* <Subheading>Some things I'll be writing on...</Subheading>
         <ul>
           {paths.map(s => s ===''?<></>:<ListItem>{s}</ListItem>)}
         </ul>
         {/* <TextNodes/> */}
-        {/* <TraversalTimer></TraversalTimer> */}
-      </PageContainer>
+      </BroadPageContainer>
 
     </Layout>
   )

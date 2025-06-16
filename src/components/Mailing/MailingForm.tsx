@@ -2,10 +2,9 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
 import { Form, Input } from "../../atoms/Container"
-import { Paragraph, SiteGrate, SiteVoice, SiteVoiceDeclare } from "../../atoms/TypographySC"
+import { Paragraph, SiteGrate } from "../../atoms/TypographySC"
 import type { CSSProperties } from "react"
 import { MailingFormSchema, type MailingFormValues } from "../../schemas/mailing"
-import { Link } from "@/atoms/Typography"
 
 
 

@@ -12,21 +12,21 @@ import { Footer } from './Footer/Footer';
 export default function Layout({ children, logSlugs, articleSlugs }: { children: React.ReactNode; articleSlugs: string[]; logSlugs: string[] }) {
   return (
     <div className={layoutStyles.layout}> 
-      <div style={{ gridArea: 'header', display:'flex',flexDirection:'row', justifyContent:'end' }}>
+      <div style={{ gridArea: 'header', display:'flex',flexDirection:'row', justifyContent:'start' }}>
         <div style={{ padding:'1em' }}>
-
+          <Link href='/'>L.dev</Link>  
         </div>
-          <div style={{ display:'flex', flexDirection:'column', justifyContent:'end'}}>
+        <div style={{ display:'flex', flexDirection:'column', justifyContent:'end'}}>
         </div>
       </div>
 
 
     
 
-      <div style={{gridArea:'header',  visibility:'', display:'flex', flexDirection:'row', }} id='pull-bar'>
+      <div style={{gridArea:'header', visibility:'hidden', display:'flex', flexDirection:'row', }} id='pull-bar'>
         <div className={sidebarStyles.cubby} style={{ flexGrow:1}}>
           <div>
-            <Link href='/gallery'>gallery</Link>  
+            {/* <Link href='/gallery'>gallery</Link>  / */}
           </div>
           <div>
             {/* <Link href='/about'>about</Link> */}
@@ -49,8 +49,9 @@ export default function Layout({ children, logSlugs, articleSlugs }: { children:
         
       </main>
       <div style={{ gridArea:'right' }}>
-        <LogsBar slugs={logSlugs} />
-        <Sidebar slugs={articleSlugs} />
+        {/* on relearning to love Developing */}
+        {/* <LogsBar slugs={logSlugs} /> */}
+        {/* <Sidebar slugs={articleSlugs} /> */}
       </div>
 
       <Row style={{ gridArea:'mail', marginTop:'5.4rem', padding:'2rem', justifyContent:'center' }}>

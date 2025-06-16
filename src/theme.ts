@@ -6,7 +6,7 @@ export const lightTheme = {
     shadeBg: '#eee',
     shadierBg: '#ddd',
     text: '#111',
-    primary: 'var(--deep-blue)',
+    primary: 'var(--off-white)',
     secondary: 'red',
     tagBg: '#ddd',
     tagText: '#333',
@@ -33,3 +33,6 @@ export const darkTheme = {
   },
   fonts: lightTheme.fonts,
 }
+
+
+export type AppTheme = typeof lightTheme;

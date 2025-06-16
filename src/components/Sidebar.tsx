@@ -6,7 +6,7 @@ import css from "styled-jsx/css";
 import { FooterMapLink } from "@/atoms/TypographySC";
 
 // components/Sidebar.tsx
-export function Sidebar({ slugs, style }: { slugs: string[], style:CSSProperties }) {
+export function Sidebar({ slugs, style }: { slugs: string[], style?:CSSProperties }) {
   const [hovered, setHovered] = useState<number>()
   return (
     <nav className={sidebarStyles.sidebar} style={{ ...style }}>

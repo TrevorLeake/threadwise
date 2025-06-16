@@ -9,6 +9,9 @@ import { Frontmatter } from '@/types/post';
 
 export function getAllArticleSlugs() {
   const articlesDir = path.join(process.cwd(), 'src/content/posts');
+  
+  // get also the frontmatter
+
   return  fs.readdirSync(articlesDir);
 }
 
@@ -44,16 +47,17 @@ export function getPostBySlug(slug: string) {
 
 export function getAllPosts(): Post[] {
   const postsDirectory = path.join(process.cwd(), 'src/content/posts');
-  const logsDir = path.join(process.cwd(), 'src/content/logs');
+  // const logsDir = path.join(process.cwd(), 'src/content/logs');
 
-  const assetDirs = fs.readdirSync(postsDirectory).concat(fs.readdirSync(logsDir))
+  const sluggedAssetDirs = fs.readdirSync(postsDirectory)
 
-  return assetDirs.map((dir) => {
-    const filePath = path.join(postsDirectory, dir);
+
+  return sluggedAssetDirs.map((sluggedDir) => {
+    const filePath = path.join(postsDirectory, `${sluggedDir}/index.mdx`);
     const fileContents = fs.readFileSync(filePath, 'utf8');
     const { data, content } = matter(fileContents);
 
-    const slug = slugify(data.title || dir.replace(/\.mdx$/, ''), {
+    const slug = slugify(data.title || sluggedDir, {
       lower: true,
       strict: true,
     });

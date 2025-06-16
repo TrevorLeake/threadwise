@@ -1,7 +1,7 @@
 // atoms/Typography.tsx
 import styled from 'styled-components'
 
-import '../styles/globals.css'
+// import '../styles/globals.css'
 
 export const Heading = styled.h1`
   font-size: var(--heading-ramp); 
@@ -13,6 +13,15 @@ export const Heading = styled.h1`
   margin-bottom: 1rem;
   
   `
+export const SectionHeading = styled.h2`
+  font-size: var(--section-heading-ramp); 
+  font-weight: 400;
+
+  color: ${({theme})=> theme.colors.text};
+  font-family: ${({theme})=> theme.fonts.heading};
+  margin-bottom: 1rem;
+`
+
 // IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700
 // Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900
 // Noto+Sans:ital,wght@0,100..900;1,100..900
@@ -37,6 +46,7 @@ export const Paragraph = styled.p`
   font-family: ${({theme})=> theme.fonts.body};
   text-align: left;
   margin-bottom: 1.25rem;
+  word-wrap: anywhere;
 `
 
 export const SiteGrate = styled.p`
@@ -88,7 +98,7 @@ export const Link = styled.a`
   text-decoration: none;
   border-bottom: 1px solid transparent;
   &:hover {
-    border-bottom-color: ${({ theme }) => 'red'};
+    border-bottom-color: ${({ theme }) => theme.colors.text};
   }
 `
 
@@ -97,7 +107,7 @@ export const FooterMapLink = styled.a`
   border-bottom: 1px solid transparent;
   color:rgb(186, 183, 183);
   &:hover {
-    border-bottom-color: ${({ theme }) => 'red'};
+    border-bottom-color: ${({ theme }) => theme.colors.shadeBg};
   }
 `
 
@@ -114,3 +124,4 @@ export const Button = styled.button`
     opacity: 0.9;
   }
 `
+

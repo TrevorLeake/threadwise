@@ -95,5 +95,5 @@
 .date {
   font-size: var(--font-subheading);
   font-family: var(--font-pleasant-authority);
-  color: var(--color-tag-text)
+  color: var(--color-tag-text);
 }

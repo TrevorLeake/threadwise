@@ -10,6 +10,7 @@
  
   
   --heading-ramp: clamp(3rem, 3rem + 8vw, 6.5rem);
+  --section-heading-ramp: clamp(2.4rem, 2.4rem + 7vw, 5rem); 
   --subheading-ramp: clamp(1.3rem, 1.3rem + 1vw, 2rem);
   --body-ramp: clamp(1rem, 1rem, 1rem); 
   --site-voice-ramp: clamp(1rem, 1rem + 3vw, 3rem); 
@@ -20,6 +21,7 @@
   :root {
     --background: #012035;
     --foreground: #ededed;
+ 
   }
 }
 

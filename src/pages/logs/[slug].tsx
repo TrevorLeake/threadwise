@@ -15,7 +15,7 @@ import SpeakerDiagram from '@/components/SpeakerDiagram';
 import TraversalTimer from '@/components/TraversalTimer';
 import { HR, PageContainer, Row } from '@/atoms/Container';
 import { Heading, ListItem, Paragraph, Subheading } from '@/atoms/TypographySC';
-import { Date, InlinePortal } from '@/atoms/Typography';
+import { Date } from '@/atoms/Typography';
 import { Tag } from '@/atoms/Tag';
 
 export const getStaticPaths: GetStaticPaths = async () => {

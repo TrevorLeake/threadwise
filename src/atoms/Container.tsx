@@ -1,8 +1,16 @@
 import type { CSSProperties } from "react"
 import styled from "styled-components"
-import '../styles/globals.css'
 
 // atoms/Container.tsx
+export const BroadPageContainer = styled.div`
+  max-width: 65vw;
+  margin: 0 auto;
+  padding: .9rem 2.4rem;
+  // background-color: ${({ theme }) => theme.colors.shadeBg};
+  // box-shadow: .2rem .2rem .5rem #00000099;
+  min-height:min(100vh);
+`
+
 export const PageContainer = styled.div`
   max-width: 60ch;
   margin: 0 auto;
@@ -23,7 +31,7 @@ export const HR = styled.hr`
   `
 
 
-export const Row = (props:{children:React.ReactNode,style:CSSProperties}) => <div style={{ display:'flex', flexDirection:'row', ...props.style }}>{props.children}</div>
+export const Row = (props:{children:React.ReactNode,style?:CSSProperties}) => <div style={{ display:'flex', flexDirection:'row', ...props.style }}>{props.children}</div>
 
 export const Form = styled.form`
   padding:3rem;
@@ -43,4 +51,25 @@ export const Input = styled.input`
   border-width: 1px;
   // outline:none;
   margin:3px;
+  
+`
+
+
+export const FlowRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap:1rem;
+  justify-content: space-around;
+  align-items:stretch;
+`
+
+export const PostPreviewSquare = styled.div`
+  // min-width: fit-content;
+  padding: 2rem;
+  max-height:8rem;
+  max-width: 20ch;
+  // background: ${({theme})=> theme.colors.shadierBg };
+  border: .1rem dashed ${({theme})=>theme.colors.secondary };
+  // flex-grow:1
 `

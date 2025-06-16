@@ -1,14 +1,15 @@
 // components/Footer.tsx
 import styled from 'styled-components'
-import { FooterSection, HR, PageContainer, Row, Section } from '../../atoms/Container'
+import { HR, PageContainer, Row, Section } from '../../atoms/Container'
 import Column from '../Column/Column'
-import { FooterMapLink, Paragraph, SiteGrate } from '../../atoms/Typography'
+import { Paragraph, SiteGrate } from '../../atoms/Typography'
 // import { Tag } from '../atoms/Tag'
 import styles from './Footer.module.css'
 import type { CSSProperties } from 'react'
 import { ThemeToggle } from '../ThemeButton'
 import { MailingForm } from '../Mailing/MailingForm'
 import Brandmark from '../Brandmark/Brandmark'
+import { FooterMapLink } from '@/atoms/TypographySC'
 
 
 
@@ -17,7 +18,7 @@ const FooterWrapper = styled.footer`
   padding: 2rem 1rem;
   text-align: center;
   font-size: 0.9rem;
-  color: ${({ theme }) => theme.colors.textSecondary || '#888'};
+  color: ${({ theme }) => theme.colors.secondary || '#888'};
   border-top: 1px solid ${({ theme }) => theme.colors.text || '#eee'};
 `
 
@@ -39,7 +40,7 @@ const FooterDate = styled.time`
 
 
 
-export const Footer = () => {
+export const Footer = (props:{style?: CSSProperties}) => {
   const year = new Date().getFullYear()
 
   return (
