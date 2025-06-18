@@ -17,6 +17,8 @@ import { HR, PageContainer, Row } from '@/atoms/Container';
 import { Date, Heading, ListItem, Paragraph, Subheading } from '@/atoms/Typography';
 import { Tag } from '@/atoms/Tag';
 import { EyeLead } from '@/atoms/TypographySC';
+import { InfiniteGrid } from '@/components/InfiniteGrid';
+import RxInfiniteGridViewer from '@/GridViewer';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const articleSlugs = getAllArticleSlugs();
@@ -54,7 +56,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export default function PostPage({ frontmatter, mdxSource, articleSlugs, logSlugs }: any) {
-  const components = { Snippet, Monad, TextSet, SpeakerDiagram, TraversalTimer, EyeLead };
+  const components = { Snippet, Monad, TextSet, SpeakerDiagram, TraversalTimer, EyeLead, RxInfiniteGridViewer };
   // console.log(frontmatter, mdxSource.frontmatter)
 
   const { title,subheading, date, tags, techTags } = frontmatter

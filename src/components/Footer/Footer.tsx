@@ -59,7 +59,7 @@ export const Footer = (props:{style?: CSSProperties}) => {
               <br/>
             </ul>
           <div>
-            <ThemeToggle></ThemeToggle>
+            {/* <ThemeToggle></ThemeToggle> */}
           </div>
         </Column>
 

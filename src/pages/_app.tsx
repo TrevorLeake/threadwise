@@ -28,6 +28,12 @@ export const metadata: Metadata = {
 // };
 
 
+// import App, { Container } from 'next/app';
+import { DefaultSeo } from 'next-seo';
+
+// import your default seo configuration
+// import SEO from '../next-seo.config';
+
 export default function App({ Component, pageProps }: AppProps) {
 
 
@@ -104,6 +110,19 @@ export default function App({ Component, pageProps }: AppProps) {
         }} /> */}
 
 
+        <DefaultSeo
+          openGraph={{
+            type: 'website',
+            locale: 'en_IE',
+            url: 'https://www.leake.dev/',
+            siteName: 'Leake.Dev',
+          }}
+          twitter={{
+            handle: '@trevorleake',
+            site: '@',
+            cardType: 'summary_large_image',
+          }}
+        />
 
         {/* <link rel="icon" type="image/svg+xml" href="/block.svg" /> */}
 

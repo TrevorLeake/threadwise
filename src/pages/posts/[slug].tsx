@@ -17,6 +17,9 @@ import { Tag } from '@/atoms/Tag';
 import { Date } from '@/atoms/Typography';
 import Column from '@/components/Column/Column';
 
+import { NextSeo } from 'next-seo';
+import RxInfiniteGridViewer from '@/GridViewer';
+
 export const getStaticPaths: GetStaticPaths = async () => {
   const articleSlugs = getAllArticleSlugs();
   const logSlugs = getAllLogSlugs()
@@ -63,14 +66,44 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   };
 };
 
+import { ArticleJsonLd } from 'next-seo';
+
+const LDJ = (props:{title:string, url:string, publishedDate:string, modifiedDate:string,description:string}) => (
+  <>
+    <ArticleJsonLd
+      useAppDir={false}
+      url={props.url || "https://leake.dev/"}
+      title={props.title}
+      images={[]}
+      // images={[
+      //   // 'https://example.com/photos/16x9/photo.jpg',
+      // ]}
+      datePublished={props.publishedDate}
+      dateModified={props.modifiedDate}
+      authorName={[{ 
+          name: 'Trevor Leake',
+          url: 'https://leake.dev',
+        },
+      ]}
+      publisherName="Trevor Leake"
+      publisherLogo='/public/block.svg'
+      // publisherLogo="https://www.example.com/photos/logo.jpg"
+      description={props.description}
+      isAccessibleForFree={true}
+    />
+  </>
+);
+
+
 export default function PostPage({ frontmatter, mdxSource, articleSlugs, logSlugs }: any) {
 
-  const components = { Snippet, Monad, TextSet, TraversalTimer, EyeLead  };
+  const components = { Snippet, Monad, TextSet, TraversalTimer, EyeLead, RxInfiniteGridViewer };
   // console.log(frontmatter, mdxSource.frontmatter)
-  const { title, subheading, publishedDate, tags } = frontmatter
+  const { title, subheading, publishedDate, tags, previewDescription } = frontmatter
   // layout type... log, journal, post, ... 
   return (
     <Layout articleSlugs={articleSlugs} logSlugs={logSlugs}>
+      <LDJ {...frontmatter}></LDJ>
       <PageContainer>
         <Row style={{ float:'right',flexFlow:'row-reverse', padding:'.8rem'}}>
           {!publishedDate?<></>:<Date>{publishedDate}</Date>} 
@@ -80,6 +113,10 @@ export default function PostPage({ frontmatter, mdxSource, articleSlugs, logSlug
         </Row>
         <Subheading>{subheading}</Subheading>
 
+        <NextSeo
+          title={title+" - TL.dev"}
+          description={previewDescription}
+        />
         {/* <div style={{display:'flex', flexDirection:'row'}}>
           {!tags?<></>:tags.split(',').map((tag:string)=><Tag>{tag}</Tag>)}
         </div> */}

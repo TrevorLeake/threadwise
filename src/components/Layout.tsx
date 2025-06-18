@@ -12,34 +12,23 @@ import { Footer } from './Footer/Footer';
 export default function Layout({ children, logSlugs, articleSlugs }: { children: React.ReactNode; articleSlugs: string[]; logSlugs: string[] }) {
   return (
     <div className={layoutStyles.layout}> 
+
       <div style={{ gridArea: 'header', display:'flex',flexDirection:'row', justifyContent:'start' }}>
-        <div style={{ padding:'1em' }}>
-          <Link href='/'>Leake.dev</Link>  
-        </div>
-        <div style={{ display:'flex', flexDirection:'column', justifyContent:'end'}}>
-        </div>
+        {/* <div style={{ width:75,height:0, }}></div> */}
+        <Link style={{ paddingTop:12, padding:5}} href='/'>
+          <code style={{ backgroundColor:'hsl(from var(--background) h s calc(l*.7))', padding:'.5rem', paddingTop:'.6rem', borderRadius:'7px'}}>
+            <strong>
+              <b style={{ color:'white',fontSize:'1.3rem'}}>
+                /
+              </b>
+            </strong>
+          </code>
+          {/* <div style={{ marginTop:10,width:10,height:10,backgroundColor:'white',clipPath:'circe(50%)'}}></div> */}
+        </Link>
       </div>
 
 
     
-
-      <div style={{gridArea:'header', visibility:'hidden', display:'flex', flexDirection:'row', }} id='pull-bar'>
-        <div className={sidebarStyles.cubby} style={{ flexGrow:1}}>
-          <div>
-            {/* <Link href='/gallery'>gallery</Link>  / */}
-          </div>
-          <div>
-            {/* <Link href='/about'>about</Link> */}
-          </div>
-          <div>
-            {/* <Link href='/sketches'>sketches</Link> */}
-          </div>
-        </div>
-        {
-          Array.from([0,1,2,3]).map((_,i) => <div key={_} style={{flexGrow:1}} className={sidebarStyles.cubby}></div>)
-        }
-        {/* <Link href={'/sketchpad'}>sketchpad</Link> */}
-      </div>
 
       <main style={{ 
         gridArea: 'main', 

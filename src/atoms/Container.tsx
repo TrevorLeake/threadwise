@@ -67,11 +67,9 @@ export const FlowRow = styled.div`
 export const PostPreviewSquare = styled.div`
   // min-width: fit-content;
   padding: 1rem;
-
-  max-height:8rem;
   max-width: 20ch;
   width: 20ch;
   // background: ${({theme})=> theme.colors.shadierBg };
-  // border: .1rem dashed ${({theme})=>theme.colors.secondary };
+  border: .1rem dashed ${({theme})=>theme.colors.text };
   // flex-grow:1
 `

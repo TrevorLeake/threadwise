@@ -56,7 +56,6 @@ interface Props {
 }
 
 export default function MailingPage({ frontmatter, mdxSource, slugs }: any) {
-  const fields = 'software and computer science; math; mechanical engineering; music'
   return (
     // <Layout slugs={slugs}>
       <PageContainer>
@@ -64,10 +63,10 @@ export default function MailingPage({ frontmatter, mdxSource, slugs }: any) {
         <div>
           <br/>
           <br/>
-          Q: What have you been doing in the year gap in your work? 
+          {/* Q: What have you been doing in this year gap off work?  */}
           <br/>
           <br/>
-          A: I've been asking myself questions, deconstructing and understanding the social forces I exert. Therapy, books, journaling. And coding!
+          {/* A: Therapy, learning soft skills, and reviewing fundamentals.  */}
           <br/>
         </div>
       </PageContainer>
