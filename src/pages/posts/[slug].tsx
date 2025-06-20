@@ -19,6 +19,8 @@ import Column from '@/components/Column/Column';
 
 import { NextSeo } from 'next-seo';
 import RxInfiniteGridViewer from '@/GridViewer';
+import LDJson from '@/components/SEO/LDJson';
+import Article from '@/components/Article/Article';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const articleSlugs = getAllArticleSlugs();
@@ -66,35 +68,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   };
 };
 
-import { ArticleJsonLd } from 'next-seo';
-
-const LDJ = (props:{title:string, url:string, publishedDate:string, modifiedDate:string,description:string}) => (
-  <>
-    <ArticleJsonLd
-      useAppDir={false}
-      url={props.url || "https://leake.dev/"}
-      title={props.title}
-      images={[]}
-      // images={[
-      //   // 'https://example.com/photos/16x9/photo.jpg',
-      // ]}
-      datePublished={props.publishedDate}
-      dateModified={props.modifiedDate}
-      authorName={[{ 
-          name: 'Trevor Leake',
-          url: 'https://leake.dev',
-        },
-      ]}
-      publisherName="Trevor Leake"
-      publisherLogo='/public/block.svg'
-      // publisherLogo="https://www.example.com/photos/logo.jpg"
-      description={props.description}
-      isAccessibleForFree={true}
-    />
-  </>
-);
-
-
 export default function PostPage({ frontmatter, mdxSource, articleSlugs, logSlugs }: any) {
 
   const components = { Snippet, Monad, TextSet, TraversalTimer, EyeLead, RxInfiniteGridViewer };
@@ -103,38 +76,17 @@ export default function PostPage({ frontmatter, mdxSource, articleSlugs, logSlug
   // layout type... log, journal, post, ... 
   return (
     <Layout articleSlugs={articleSlugs} logSlugs={logSlugs}>
-      <LDJ {...frontmatter}></LDJ>
-      <PageContainer>
-        <Row style={{ float:'right',flexFlow:'row-reverse', padding:'.8rem'}}>
-          {!publishedDate?<></>:<Date>{publishedDate}</Date>} 
-        </Row>
-        <Row style={{}}>
-            <Heading style={{textWrap:'wrap', textAlign:'center',  whiteSpace:'wrap'}}>{title}</Heading>
-        </Row>
-        <Subheading>{subheading}</Subheading>
+      <LDJson {...frontmatter}></LDJson>
+      <NextSeo
+        title={title+" - TL.dev"}
+        description={previewDescription}
+      />
 
-        <NextSeo
-          title={title+" - TL.dev"}
-          description={previewDescription}
-        />
-        {/* <div style={{display:'flex', flexDirection:'row'}}>
-          {!tags?<></>:tags.split(',').map((tag:string)=><Tag>{tag}</Tag>)}
-        </div> */}
-        <HR></HR>
-        
-        {/* <h1 style={{ display:'flex', flexDirection:'row',alignItems:'baseline',  justifyContent:'space-around', width:'100%'}} >{frontmatter.title.split(' ').map((word: string, i:number) => <span>{word}</span>)}</h1> */}
-        <MDXRemote 
-          frontmatter={frontmatter}
-          {...mdxSource} 
-          components={{
-            ...components, 
-            h1:Heading,
-            h2:Subheading,
-            li:ListItem,
-            p:Paragraph,
-          }} 
-        />
-      </PageContainer>
+      <Article 
+        frontmatter={frontmatter} 
+        mdxSource={mdxSource} 
+      />
+
     </Layout>
   );
 }

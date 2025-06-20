@@ -1,4 +1,8 @@
 some ways I've liked working
+
 how it feels to fight react
 
 notes from a code thicket
+
+some whats I've liked working, some ways I've worked
+

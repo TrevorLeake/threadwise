@@ -57,11 +57,6 @@ export default function MailingPage({ frontmatter, mdxSource, slugs }: any) {
     // <Layout slugs={slugs}>
       <article className='dark-mode' >
                 <div style={{ justifyItems:'right', marginTop:'auto',  flexFlow:'column', display:'flex' }}>
-          {/* <Link href='https://spectralism.io'>spectralism.io</Link>
-          {/* <a href='https://threadwise.dev'>threadwise.dev</a> 
-          <a href='https://tabatlas.com'>tab atlas</a>
-          <a href='https://healthful.dev'>healthful.dev</a>
-           */}
            {`RE: { hyperpatter }`}
         </div>
 

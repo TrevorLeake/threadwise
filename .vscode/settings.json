@@ -1,0 +1,6 @@
+{
+  "workbench.editor.customLabels.patterns": {
+    "**/index.mdx": "${dirname} (${filename}.${extname})"
+}
+
+}

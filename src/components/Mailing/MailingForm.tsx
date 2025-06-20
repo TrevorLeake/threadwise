@@ -37,12 +37,7 @@ export const MailingForm = (props:{style?:CSSProperties}) => {
         mailing
       </SiteGrate>
         <div style={{ justifyItems:'right', marginTop:'auto',  flexFlow:'column', display:'flex' }}>
-          {/* <Link href='https://spectralism.io'>spectralism.io</Link>
-          <a href='https://threadwise.dev'>threadwise.dev</a>
-          <Link href='https://tabatlas.com'>tab atlas</Link>
-          <Link href='https://healthful.dev'>healthful.dev</Link> */}
            {`RE: { hyperpatter }`}
-          
         </div>
 
       <Input data-testid='mailing-form-email-input' {...register("email")} placeholder="email@address.com" type="email"/>

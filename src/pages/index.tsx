@@ -3,10 +3,11 @@ import { getSidebarLayoutProps } from '@/lib/layout';
 import Layout from '@/components/Layout';
 import { GridDisplay, key } from '@/components/Grid';
 
-type Props = {
+export type Props = {
   articleSlugs: string[];
   logSlugs: string[];
   posts: Post[]
+  logs: Post[]
 };
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
@@ -54,7 +55,7 @@ const PostPreview = (props:{style?:CSSProperties, title:string, previewDescripti
 }
 
 
-export default function Home({ articleSlugs, logSlugs, posts }: Props) {
+export default function Home({ articleSlugs, logSlugs, posts, logs }: Props) {
 
   const paths = `
   lighthouse performance vitals "modern standards"
@@ -89,9 +90,9 @@ export default function Home({ articleSlugs, logSlugs, posts }: Props) {
     <Layout articleSlugs={articleSlugs} logSlugs={logSlugs}>
       <BroadPageContainer>
         {/* <TraversalTimer></TraversalTimer>  */}
-        <Heading>Writing</Heading>
+        <Heading>Emptiness</Heading>
         <Section>
-          <SectionHeading>dev domains</SectionHeading>
+          <SectionHeading>Articles</SectionHeading>
           <SectionSubheading>
             design sketching, w
             layers,
@@ -101,7 +102,7 @@ export default function Home({ articleSlugs, logSlugs, posts }: Props) {
           </SectionSubheading>
           <FlowRow>
               {posts.map((post,i) => (
-                i>4?<></>:<Link href={`/posts/${post.slug}`}>
+                <Link href={`/posts/${post.slug}`}>
                   <PostPreview {...post.frontmatter}/>
                 </Link>
               ))}
@@ -110,15 +111,15 @@ export default function Home({ articleSlugs, logSlugs, posts }: Props) {
 
         
           <Section>
-            <SectionHeading>social domains</SectionHeading>
+            <SectionHeading>Daily Logs</SectionHeading>
             <SectionSubheading>
               working with self, developing self, working with others
               understanding the thicket, 
             </SectionSubheading>
             <FlowRow>
-              {posts.map((post,i) => (
-                i>5?<></>:<Link href={`/posts/${post.slug}`}>
-                  <PostPreview {...post.frontmatter}/>
+              {logs.map((log,i) => (
+                <Link href={`/logs/${log.slug}`}>
+                  <PostPreview {...log.frontmatter}/>
                 </Link>
               ))}
             </FlowRow>
@@ -128,11 +129,11 @@ export default function Home({ articleSlugs, logSlugs, posts }: Props) {
             <FlowRow>
               {logSlugs.map(slug => <div>{slug.replace('-',' ')}</div>)}
               {
-              // posts.map(post => (
-              //   <Link href={`/posts/${post.slug}`}>
-              //     <PostPreview {...post.frontmatter}/>
-              //   </Link>
-              // ))
+               posts.map(post => (
+                 <Link href={`/posts/${post.slug}`}>
+                   <PostPreview {...post.frontmatter}/>
+                 </Link>
+               ))
               }
             </FlowRow>
           </Section> */}
