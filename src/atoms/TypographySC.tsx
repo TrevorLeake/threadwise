@@ -6,7 +6,7 @@ import styled from 'styled-components'
 export const Heading = styled.h1`
   font-size: var(--heading-ramp); 
   font-weight: 400;
-
+  
   color: ${({theme})=> theme.colors.text};
   font-family: ${({theme})=> theme.fonts.heading};
   margin-bottom: 1rem;
@@ -51,7 +51,7 @@ export const Subheading = styled.h2`
 export const Paragraph = styled.p`
   font-size: var(--body-ramp);
   color: ${({theme})=> theme.colors.text};
-  line-height: 1.55;
+  line-height: 1.82;
   font-family: ${({theme})=> theme.fonts.body};
   text-align: left;
   margin-bottom: 1.25rem;
@@ -109,8 +109,9 @@ export const ListItem = styled.li`
 `
 
 export const InlineCode = styled.code`
-  background: ${({ theme }) => theme.colors.background};
+  background: hsl(from ${({ theme }) => theme.colors.shadierBg} h s calc(l*.5));
   padding: 0.1em 0.3em;
+  border:1px solid black;
 
   color: ${({ theme }) => theme.colors.text};
   font-family: var(--roboto);
@@ -146,7 +147,7 @@ export const FooterMapLink = styled.a`
   border-bottom: 1px solid transparent;
   color:rgb(186, 183, 183);
   &:hover {
-    border-bottom-color: ${({ theme }) => theme.colors.shadeBg};
+    // border-bottom-color: ${({ theme }) => theme.colors.shadeBg};
   }
 `
 

@@ -27,9 +27,9 @@
 
   grid-template-areas:
     "header header header header"
+    "left   left   left   left"
+    "right  right  right  right"
     "main   main   main   main"
-    "left   left   left   right"
-    "mail   mail   mail   mail"
     "footer footer footer footer";
   grid-template-columns: 1fr 1fr 1fr min-content;
   grid-template-rows: 
@@ -42,7 +42,6 @@
   grid-template-areas:
     "header header header header" 
     "left   main   main   right"
-    "mail   mail   mail   mail"
     "footer footer footer footer";
   grid-template-columns: 100px 1fr 1fr 100px;
   grid-template-rows: 

@@ -9,7 +9,7 @@ import Brandmark from './Brandmark/Brandmark';
 import { Row } from '@/atoms/Container';
 import { Footer } from './Footer/Footer';
 
-export default function Layout({ children, logSlugs, articleSlugs }: { children: React.ReactNode; articleSlugs: string[]; logSlugs: string[] }) {
+export default function Layout({ children, logSlugs  }: { children: React.ReactNode; logSlugs: string[] }) {
   return (
     <div className={layoutStyles.layout}> 
 
@@ -48,6 +48,7 @@ export default function Layout({ children, logSlugs, articleSlugs }: { children:
       </Row>
 
       <Footer style={{ gridArea:'footer', }}>
+        <>hi</>
       </Footer>
     </div>
   );

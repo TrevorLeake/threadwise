@@ -1,5 +1,5 @@
 
-aws s3 cp ./out s3://leake.dev/ --recursive
+aws s3 cp ./out s3://threadwise.dev/ --recursive
 
 
 

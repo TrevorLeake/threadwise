@@ -1,15 +1,18 @@
 import { HR, PageContainer, Row } from "@/atoms/Container"
-import { EyeLead, Heading, ListItem, Paragraph, Subheading } from "@/atoms/TypographySC"
+import { EyeLead, Heading, InlineCode, ListItem, Paragraph, Subheading } from "@/atoms/TypographySC"
 import { Frontmatter } from "@/types/post"
 import { MDXRemote } from "next-mdx-remote"
-import Snippet from "../Snippet"
-import Monad from "../Monad"
-import TextSet from "../TextSet"
-import TraversalTimer from "../TraversalTimer"
+import Snippet from "../sketchy/Snippet"
+import Monad from "../sketchy/Monad"
+import TextSet from "../sketchy/TextSet"
+import TraversalTimer from "../sketchy/TraversalTimer"
 import RxInfiniteGridViewer from "@/GridViewer"
 import { Tag } from "@/atoms/Tag"
 import { Date } from "@/atoms/Typography"
 import { ArticleLink } from "./ArticleLink"
+
+import useFitText from "use-fit-text";
+
 
 type ArticleProps = {
   frontmatter: Frontmatter
@@ -28,12 +31,14 @@ const Article = (props: ArticleProps) => {
   const { frontmatter } = props
   const { title, subheading, publishedDate, tags, previewDescription } = frontmatter
 
+  const { fontSize, ref } = useFitText();
+
   return (
     <PageContainer style={{gridArea:'main'}}>
       <Row style={{ flexFlow:'row-reverse', padding:'1rem'}}>
         {!publishedDate?<></>:<Date>{publishedDate}</Date>} 
       </Row>
-      <Heading>{title}</Heading>
+      <Heading ref={ref}>{title}</Heading>
       <Subheading>{subheading}</Subheading>
       {!tags?<></>:tags.split(',').map((tag:string)=><Tag>{tag}</Tag>)}
       {/* <div style={{display:'flex', flexDirection:'column'}}> */}
@@ -53,7 +58,8 @@ const Article = (props: ArticleProps) => {
           h2:Subheading,
           li:ListItem,
           p:Paragraph,
-          a:ArticleLink
+          a:ArticleLink,
+          code:InlineCode,
         }} 
       />
     </PageContainer>

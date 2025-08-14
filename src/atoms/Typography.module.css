@@ -16,6 +16,13 @@
   margin-left: auto;
 }
 
+.date {
+  color: var(--color-tag-text);
+}
+.logTimeMark {
+  color: var(--color-tag-text);
+}
+
 .paragraph,
 .listItem {
   font-size: var(--body-ramp);
@@ -82,7 +89,7 @@
   background-color: var(--color-background);
   color: var(--color-text);
   border: 2px solid var(--color-text);
-  padding: 0.6rem 1.2rem;
+  padding: 0.6rem 1.2rem; 
   border-radius: 6px;
   font-size: 1rem;
   cursor: pointer;
@@ -92,8 +99,3 @@
   opacity: 0.9;
 }
 
-.date {
-  font-size: var(--font-subheading);
-  font-family: var(--font-pleasant-authority);
-  color: var(--color-tag-text);
-}

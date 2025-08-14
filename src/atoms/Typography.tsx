@@ -8,6 +8,15 @@ export const Date: React.FC<DateProps> = ({ children, className, ...props }) => 
     {children}
   </span>
 );
+type LogTimemark = React.HTMLAttributes<HTMLSpanElement>;
+export const LogTimeMark: React.FC<DateProps> = ({ children, className, ...props }) => (
+  <>
+    <span className={clsx(styles.logTimeMark, className)} {...props}>
+      {children}
+    </span>
+    <br/>
+  </>
+);
 // export const Date = ({ children, className, ...props }) => (
 //   <span className={clsx(styles.date, className)} {...props}>{children}</span>
 // );

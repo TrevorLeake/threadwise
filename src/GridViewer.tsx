@@ -2,6 +2,8 @@ import React, { useRef, useEffect, useState } from 'react';
 import { createFocusStream, Focus } from './controller';
 import { Subscription } from 'rxjs';
 
+
+
 export default function RxInfiniteGridViewer() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [focus, setFocus] = useState<Focus>({ x: 0, y: 0 });

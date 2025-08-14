@@ -128,7 +128,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
 
         {/* Favicon */}
-        <link rel="icon" href="/block.svg" />
+        {/* <link rel="icon" href="/block.svg" /> */}
 
       </>
       <ThemeProvider>

@@ -1,5 +1,5 @@
 // import { listAudio } from "@/api/audio-api-client";
-import { AudioRenderViewer } from "@/components/AudioRenderViewer";
+import { AudioRenderViewer } from "@/components/sketchy/AudioRenderViewer";
 import Layout from "@/components/Layout";
 
 import { getSidebarLayoutProps } from '@/lib/layout';
@@ -18,7 +18,6 @@ export const getStaticProps = async () => {
 
 
 interface Props {
-  articleSlugs: string[];
   logSlugs: string[];
 }
 
@@ -47,7 +46,7 @@ const audioUrl = (imgURL:string) => {
   }
 }
 
-export default function GalleryPage({ logSlugs, articleSlugs }:Props) {
+export default function GalleryPage({ logSlugs }:Props) {
 
   // const [audioList, setAudioList] = useState(null) 
   // useEffect(() => {
@@ -81,7 +80,7 @@ export default function GalleryPage({ logSlugs, articleSlugs }:Props) {
   ] 
 
   return (
-    <Layout articleSlugs={articleSlugs} logSlugs={logSlugs}>
+    <Layout logSlugs={logSlugs}>
       <main className="prose mx-auto">
         {metas.map(meta => 
           <div>

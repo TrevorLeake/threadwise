@@ -23,16 +23,8 @@ export function Sidebar({ slugs, style }: { slugs: string[], style?:CSSPropertie
         {/* <sub>may</sub> */}
         {slugs.map((slug, i) => (
           <Link key={slug} href={`/posts/${slug}`}>
-            {/* <li 
-              onMouseEnter={(_)=>{ setHovered(i) }}
-              onMouseLeave={(_)=>{ setHovered(undefined) }}
-              key={slug}
-            > */}
-              {/* *</> */}
-              {slug.replaceAll('-', ' ')}
-            {/* </li> */}
+            {slug.replaceAll('-', ' ')}
           </Link>
-
         ))}
         {/* <pre>
         journals: css html js;<br/>

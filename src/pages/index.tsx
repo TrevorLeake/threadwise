@@ -1,34 +1,35 @@
 import { GetStaticProps } from 'next';
 import { getSidebarLayoutProps } from '@/lib/layout';
 import Layout from '@/components/Layout';
-import { GridDisplay, key } from '@/components/Grid';
+import { GridDisplay, key } from '@/components/sketchy/Grid';
 
 export type Props = {
-  articleSlugs: string[];
   logSlugs: string[];
-  posts: Post[]
   logs: Post[]
 };
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
-  const layoutProps = await getSidebarLayoutProps();
-  return { props: layoutProps };
-};
 
 
 
 // pages/index.tsx
 
-import { InfiniteGrid } from '@/components/InfiniteGrid';
-import String from '@/components/String';
-import Canvas from '@/components/Canvas';
+import { InfiniteGrid } from '@/components/sketchy/InfiniteGrid';
+import String from '@/components/sketchy/String';
+import Canvas from '@/components/sketchy/Canvas';
 import Link from 'next/link';
-import TraversalTimer from '@/components/TraversalTimer';
-import { CSSProperties, useEffect, useReducer, useRef } from 'react';
-import { BroadPageContainer, FlowRow, HR, PageContainer, PostPreviewSquare, Section } from '@/atoms/Container';
+import TraversalTimer from '@/components/sketchy/TraversalTimer';
+import { createContext, CSSProperties, useContext, useEffect, useReducer, useRef, useState } from 'react';
+import { BroadPageContainer, FlowRow, HR, PageContainer, PostPreviewSquare, Row, Section } from '@/atoms/Container';
 import { Heading, ListItem, Paragraph, PostPreviewHeading, PostPreviewParagraph, SectionHeading, SectionSubheading, Subheading } from '@/atoms/TypographySC';
 import { Post } from '@/lib/posts';
-import { Date } from '@/atoms/Typography';
+import { Date as DateTag } from '@/atoms/Typography';
+import { Metronome } from '@/components/Metronome/Metronome';
+import { Monad } from '@/components/Monad/Monad';
+import { Grid } from '@/components/Grid/Grid';
+import useTime from '@/components/hooks/useTime';
+import { NextSeo } from 'next-seo';
+import { Alarm } from '@/components/Alarm/Alarm';
+import { Space } from '@/components/Alarm/Space';
 
 const exampleGrid = {
   [key([0, 0])]: 'You',
@@ -37,16 +38,51 @@ const exampleGrid = {
   [key([-1, -1])]: 'D',
 };
 
+interface BoundContext {
+  x:number,
+  y:number,
+  w:number,
+  h:number
+}
+
+const initial:BoundContext = {x:0,y:0,w:0,h:0}
+const BoundContext = createContext(initial);
+
+// each context could be a layer of entities.. 
+// semi-continuous sheaves
+// 
+
+// premapped and more rxplicitly composed controlled and lifted
+
+const ContextChild = () => {
+  const v = useContext(BoundContext)
+
+  return (
+    <div style={{position:'absolute', left: v.x*4, height:v.h, width:v.w, top:v.y }}>
+      {Object.entries(v).map(n => <p>{n}</p>)}
+    </div>
+  )
+}
+
+
+
+
+
+
+
 
 
 const PostPreview = (props:{style?:CSSProperties, title:string, previewDescription:string, publishedDate:string, tags:string[] }) => {
   return <PostPreviewSquare>
-    <PostPreviewHeading>
-      {props.title}
-    </PostPreviewHeading>
-    {/* <Date>
+  
+    <DateTag>
       {props.publishedDate}
-    </Date> */}
+    </DateTag>
+    <Row>
+      <PostPreviewHeading>
+        {props.title}
+      </PostPreviewHeading>
+    </Row>
     <PostPreviewParagraph>
       {props.previewDescription}
     </PostPreviewParagraph>
@@ -55,7 +91,28 @@ const PostPreview = (props:{style?:CSSProperties, title:string, previewDescripti
 }
 
 
-export default function Home({ articleSlugs, logSlugs, posts, logs }: Props) {
+
+
+const Timeline = (props:{dates:string[]}) => {
+  const days = 20 // days
+  const hrs = days * 24
+  const hourPx = 10 // px /hr
+
+  return (
+  <div style={{ overflowX:'scroll' }}>
+    <div style={{ width:hrs*hourPx}}>
+      {props.dates.map(d => <span style={{rotate:'90deg', display:'inline-block'}}>{d}</span>)}
+    </div>
+  </div>
+  )
+}
+
+
+export const selectDate = (post:Post) => post.frontmatter.publishedDate 
+export const postComparator = (pa:Post, pb:Post) => selectDate(pa) > selectDate(pb) ? -1 : 1
+
+
+export default function Home({ logSlugs, logs }: Props) {
 
   const paths = `
   lighthouse performance vitals "modern standards"
@@ -85,33 +142,75 @@ export default function Home({ articleSlugs, logSlugs, posts, logs }: Props) {
   const text = 'blahblahblah'
   const a1 = Array(100).fill(1).reduce((prev, acc) => text+prev)
   
+
+  // so ... world context.. there are patches like this ahead for you... 
+  // there are different aspectal options to hop between like subway surfer
+
+  const [boundCtx, setBound] = useState<BoundContext>(initial)
   const prettifySlug = (slug:string) => slug.replace('-',' ')
+
+  // gaze context... 
+  // objects in sets.. 
+
+  // spatial-temporal entity context.. 
+  // a before, a now, an after, a sense of coming, a sense of leaving
+  // habituality, a sense of eternal
+  // a sense of completeness and coherence
+  // or of avoidant decoherence
+
+  const now = new Date()
+
+  const { time } = useTime()
+  useEffect(() => {
+    
+    setBound(b => ({...b, x:time}))
+  }, [time])
+
+
+
+
+
+
   return (
-    <Layout articleSlugs={articleSlugs} logSlugs={logSlugs}>
-      <BroadPageContainer>
+    <Layout logSlugs={logSlugs}>
+      <NextSeo
+        title={'Threadwise.dev'}
+        description={'+ the config thicket'}
+      />
+      {/* <Space></Space> */}
+      {/* <Alarm></Alarm> */}
+      {/* <Timeline dates={posts.map(p=>p.frontmatter.publishedDate)} /> */}
+     
+     <PageContainer style={{ gridArea:'main'}}>
+      
+      {/* <h1>Dialectical Ambivalence</h1> */}
+
+
+
+      {/* <Grid></Grid> */}
+
+      {/* <BoundContext value={boundCtx}>
+        <div>
+          <ContextChild></ContextChild>
+        </div>
+      </BoundContext> */}
+      {/* <Monad></Monad> */}
+      {/* <Metronome></Metronome> */}
+      {/* <Link href={'/sketches'}>sketchbook</Link> */}
         {/* <TraversalTimer></TraversalTimer>  */}
-        <Heading>Emptiness</Heading>
         <Section>
-          <SectionHeading>Articles</SectionHeading>
-          <SectionSubheading>
-            design sketching, w
-            layers,
-            opinionation,
-            paradigms of representation,
-            marking
-          </SectionSubheading>
-          <FlowRow>
-              {posts.map((post,i) => (
-                <Link href={`/posts/${post.slug}`}>
-                  <PostPreview {...post.frontmatter}/>
-                </Link>
-              ))}
-          </FlowRow>
+          <SectionHeading>Threadwise</SectionHeading>
+          <Paragraph>
+            Hello! This space is for my dev-logs.
+          </Paragraph>
         </Section>
 
+
+            {/*  LOGS.. 4 most recent; view all option  */}
+
         
-          <Section>
-            <SectionHeading>Daily Logs</SectionHeading>
+          {/* <Section>
+            <SectionHeading>Logs</SectionHeading>
             <SectionSubheading>
               working with self, developing self, working with others
               understanding the thicket, 
@@ -123,7 +222,7 @@ export default function Home({ articleSlugs, logSlugs, posts, logs }: Props) {
                 </Link>
               ))}
             </FlowRow>
-          </Section>
+          </Section> */}
 
          {/* <Section>
             <FlowRow>
@@ -146,7 +245,7 @@ export default function Home({ articleSlugs, logSlugs, posts, logs }: Props) {
           {paths.map(s => s ===''?<></>:<ListItem>{s}</ListItem>)}
         </ul>
         {/* <TextNodes/> */}
-      </BroadPageContainer>
+      </PageContainer>
 
     </Layout>
   )

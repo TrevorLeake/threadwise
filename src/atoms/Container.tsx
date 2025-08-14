@@ -3,7 +3,6 @@ import styled from "styled-components"
 
 // atoms/Container.tsx
 export const BroadPageContainer = styled.div`
-  max-width: 65vw;
   margin: 0 auto;
   padding: .9rem 2.4rem;
   // background-color: ${({ theme }) => theme.colors.shadeBg};
@@ -15,6 +14,7 @@ export const PageContainer = styled.div`
   max-width: 65ch;
   margin: 0 auto;
   padding: .9rem 2.4rem;
+  margin-bottom:14rem;
   // background-color: ${({ theme }) => theme.colors.shadeBg};
   // box-shadow: .2rem .2rem .5rem #00000099;
   min-height:min(100vh);
@@ -25,7 +25,8 @@ export const Section = styled.section`
 `
 
 export const HR = styled.hr`
-  border-color:${({ theme })=> theme.colors.tagText};  
+  border-style: dotted;
+  border-color: ${({ theme })=> theme.colors.secondary};  
   transform: scaleX(1.07);
 
   `
@@ -65,10 +66,7 @@ export const FlowRow = styled.div`
 `
 
 export const PostPreviewSquare = styled.div`
-  // min-width: fit-content;
   padding: 1rem;
-  max-width: 20ch;
-  width: 20ch;
   // background: ${({theme})=> theme.colors.shadierBg };
   border: .1rem dashed ${({theme})=>theme.colors.text };
   // flex-grow:1

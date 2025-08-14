@@ -1,34 +1,36 @@
 // pages/posts/[slug].tsx
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { getPostBySlug, getAllArticleSlugs, getAllLogSlugs, getLogBySlug } from '@/lib/posts.server';
+import { getAllLogSlugs, getLogBySlug } from '@/lib/posts.server';
 import { getSidebarLayoutProps } from '@/lib/layout';
-import Layout from '@/components/Layout';
 import { serialize } from 'next-mdx-remote/serialize';
 import { MDXRemote } from 'next-mdx-remote';
-import Snippet from '@/components/Snippet';
+import Snippet from '@/components/sketchy/Snippet';
 // import './blog.css'
 
-import TextSet from '@/components/TextSet';
+import TextSet from '@/components/sketchy/TextSet';
 
-import Monad from '@/components/Monad'
-import SpeakerDiagram from '@/components/SpeakerDiagram';
-import TraversalTimer from '@/components/TraversalTimer';
+import Monad from '@/components/sketchy/Monad'
+import SpeakerDiagram from '@/components/sketchy/SpeakerDiagram';
+import TraversalTimer from '@/components/sketchy/TraversalTimer';
 import { HR, PageContainer, Row } from '@/atoms/Container';
 import { Date, Heading, ListItem, Paragraph, Subheading } from '@/atoms/Typography';
 import { Tag } from '@/atoms/Tag';
 import { EyeLead, Link as StyledLink } from '@/atoms/TypographySC';
-import { InfiniteGrid } from '@/components/InfiniteGrid';
+import { InfiniteGrid } from '@/components/sketchy/InfiniteGrid';
 import RxInfiniteGridViewer from '@/GridViewer';
 import Link from 'next/link';
 import LDJson from '@/components/SEO/LDJson';
 import { NextSeo } from 'next-seo';
 import Article from '@/components/Article/Article';
+import Layout from '@/components/Layout';
+import LogArticle from '@/components/LogArticle/LogArticle';
+import { postComparator } from '..';
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const articleSlugs = getAllArticleSlugs();
   const logSlugs = getAllLogSlugs()
+
   return {
-    paths: articleSlugs.concat(logSlugs).map((slug) => ({ params: { slug } })),
+    paths: logSlugs.map((slug) => ({ params: { slug } })),
     fallback: false,
   };
 };
@@ -49,40 +51,53 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   });
   const layoutProps = await getSidebarLayoutProps();
 
+  const posts = layoutProps.logs.sort(postComparator)
+
+
   const { frontmatter } = post
   return {
     props: {
       frontmatter,
       mdxSource,
       ...layoutProps,
+      posts
     },
   };
 };
 
-export default function PostPage({ frontmatter, mdxSource, articleSlugs, logSlugs }: any) {
+const Grid = () => {
+  const width = 6
+  const height = 6
+  
+}
+
+
+
+export default function PostPage({ frontmatter, mdxSource, logSlugs }: any) {
   const components = { 
     Snippet,
-    Monad, 
+    Monad,
+    Link, 
     TextSet, 
     SpeakerDiagram, 
     TraversalTimer, 
     EyeLead, 
     RxInfiniteGridViewer,  
+    Grid,
   };
   // console.log(frontmatter, mdxSource.frontmatter)
   const { title, subheading, publishedDate, tags, previewDescription } = frontmatter
   // layout type... log, journal, post, ... 
   return (
-    <Layout articleSlugs={articleSlugs} logSlugs={logSlugs}>
+    <Layout logSlugs={logSlugs}>
 
-      
       <LDJson {...frontmatter}></LDJson>
       <NextSeo
-        title={title + " - TL.dev"}
+        title={title}
         description={previewDescription}
       />
 
-      <Article {...{frontmatter, mdxSource}}></Article>
+      <LogArticle frontmatter={frontmatter} mdxSource={mdxSource}/>
     </Layout>
   );
 }

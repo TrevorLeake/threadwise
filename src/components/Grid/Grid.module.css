@@ -1,0 +1,10 @@
+
+.footer { 
+  grid-area: footer;
+}
+
+.Grid {
+  display: grid;
+    grid-auto-rows: 100px;
+
+}
