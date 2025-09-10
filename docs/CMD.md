@@ -8,3 +8,5 @@ aws s3 cp ./out s3://threadwise.dev/ --recursive
 # need aside logs... personal journal, and professional, etc..
 
 
+
+

@@ -10,6 +10,7 @@ import { Row } from '@/atoms/Container';
 import { Footer } from './Footer/Footer';
 
 export default function Layout({ children, logSlugs  }: { children: React.ReactNode; logSlugs: string[] }) {
+  console.log('layout', logSlugs)
   return (
     <div className={layoutStyles.layout}> 
 
@@ -39,17 +40,17 @@ export default function Layout({ children, logSlugs  }: { children: React.ReactN
       </main>
       <div style={{ gridArea:'right' }}>
         {/* on relearning to love Developing */}
-        {/* <LogsBar slugs={logSlugs} /> */}
+        <LogsBar slugs={logSlugs} />
         {/* <Sidebar slugs={articleSlugs} /> */}
       </div>
 
-      <Row style={{ gridArea:'mail', marginTop:'5.4rem', padding:'2rem', justifyContent:'center' }}>
+      {/* <Row style={{ gridArea:'mail', marginTop:'5.4rem', padding:'2rem', justifyContent:'center' }}>
         <MailingForm />
-      </Row>
+      </Row> */}
 
-      <Footer style={{ gridArea:'footer', }}>
-        <>hi</>
-      </Footer>
+      {/* <Footer style={{ gridArea:'footer', }}> */}
+        {/* <>hi</> */}
+      {/* </Footer> */}
     </div>
   );
 }

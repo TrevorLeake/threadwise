@@ -28,6 +28,7 @@ import { postComparator } from '..';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const logSlugs = getAllLogSlugs()
+  console.log('post:[slugs]', logSlugs)
 
   return {
     paths: logSlugs.map((slug) => ({ params: { slug } })),
@@ -39,6 +40,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const slug = params?.slug as string;
   const post = getLogBySlug(slug);
+
+  console.log('post:[slugs]', params)
   
   if (!post) return { notFound: true };
 
@@ -70,7 +73,6 @@ const Grid = () => {
   const height = 6
   
 }
-
 
 
 export default function PostPage({ frontmatter, mdxSource, logSlugs }: any) {

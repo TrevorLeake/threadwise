@@ -8,7 +8,6 @@ import { useEffect, useState } from "react";
 
 export const getStaticProps = async () => {
   const layoutProps = await getSidebarLayoutProps();
-
   return {
     props: {
       ...layoutProps,

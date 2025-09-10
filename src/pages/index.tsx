@@ -30,6 +30,7 @@ import useTime from '@/components/hooks/useTime';
 import { NextSeo } from 'next-seo';
 import { Alarm } from '@/components/Alarm/Alarm';
 import { Space } from '@/components/Alarm/Space';
+import { getAllLogs } from '@/lib/posts.server';
 
 const exampleGrid = {
   [key([0, 0])]: 'You',
@@ -116,7 +117,7 @@ export default function Home({ logSlugs, logs }: Props) {
 
   const paths = `
   lighthouse performance vitals "modern standards"
-    Real performance, Real standards
+    Real performa nce, Real standards
 
   common needs from various clients
     common audiences/users
@@ -141,7 +142,7 @@ export default function Home({ logSlugs, logs }: Props) {
 
   const text = 'blahblahblah'
   const a1 = Array(100).fill(1).reduce((prev, acc) => text+prev)
-  
+ 
 
   // so ... world context.. there are patches like this ahead for you... 
   // there are different aspectal options to hop between like subway surfer
@@ -165,7 +166,6 @@ export default function Home({ logSlugs, logs }: Props) {
     
     setBound(b => ({...b, x:time}))
   }, [time])
-
 
 
 
@@ -201,7 +201,7 @@ export default function Home({ logSlugs, logs }: Props) {
         <Section>
           <SectionHeading>Threadwise</SectionHeading>
           <Paragraph>
-            Hello! This space is for my dev-logs.
+
           </Paragraph>
         </Section>
 
@@ -350,3 +350,15 @@ const TextNodes = () => {
 }
 
 
+
+export async function getStaticProps() {
+  const logs = await getAllLogs(); // however you fetch them
+  const logSlugs = logs.map(l => l.slug);
+
+  return {
+    props: {
+      logs,
+      logSlugs,
+    },
+  };
+}

@@ -8,6 +8,8 @@ import { Frontmatter } from '@/types/post';
 
 
 export function getLogBySlug(slug: string) {
+  console.log('getLogBySlug', slug)
+
   let postsDir = path.join(process.cwd(), 'src/content/logs');
   let filePath = path.join(postsDir, `${slug}/index.mdx`);
   if (!fs.existsSync(filePath)) {
@@ -21,7 +23,7 @@ export function getLogBySlug(slug: string) {
 
   };
 
-
+  
   const content = fs.readFileSync(filePath, 'utf8');
   const { data, content: parsedContent } = matter(content);
 
@@ -33,6 +35,9 @@ export function getLogBySlug(slug: string) {
 
 export function getAllLogSlugs() {
   const logsDir = path.join(process.cwd(), 'src/content/logs');
+
+  console.log('getAllLogSlugs', logsDir)
+
   return  fs.readdirSync(logsDir);
 }
 
@@ -41,6 +46,8 @@ export function getAllLogSlugs() {
 
 export function getAllLogs(): Post[] {
   const logsDir = path.join(process.cwd(), 'src/content/logs');
+
+  console.log('getAllLogs', logsDir)
 
   const sluggedAssetDirs = fs.readdirSync(logsDir)
 

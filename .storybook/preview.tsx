@@ -1,4 +1,14 @@
 import type { Preview } from '@storybook/nextjs-vite'
+import { lightTheme } from '../src/theme';
+import { ThemeContext } from 'styled-components';
+
+export const decorators = [
+  (Story) => (
+    <ThemeContext value={lightTheme}>
+      <Story />
+    </ThemeContext>
+  ),
+];
 
 const preview: Preview = {
   parameters: {
